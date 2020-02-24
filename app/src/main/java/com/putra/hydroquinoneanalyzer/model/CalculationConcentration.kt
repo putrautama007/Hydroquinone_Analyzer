@@ -3,9 +3,6 @@ package com.putra.hydroquinoneanalyzer.model
 import kotlin.math.log10
 
 class CalculationConcentration(private val rgb: Double) {
-    private val STATUS_GOOD = "Layak Pakai"
-    private val STATUS_BAD = "Tidak Layak Pakai"
-
     private fun absorbency(): Double {
         return -log10(rgb / 255)
     }
@@ -28,5 +25,10 @@ class CalculationConcentration(private val rgb: Double) {
         } else {
            STATUS_BAD
         }
+    }
+
+    companion object{
+        private const val STATUS_GOOD = "Layak Pakai"
+        private const val STATUS_BAD = "Tidak Layak Pakai"
     }
 }
