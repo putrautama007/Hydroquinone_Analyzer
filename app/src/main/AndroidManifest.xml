@@ -21,7 +21,7 @@
         <activity android:name=".view.MainActivity" />
         <activity android:name=".view.DetailSampleDataActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".view.SplashScreenActivity"
+        <activity android:name=".view.splash_screen.SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:screenOrientation="portrait">
             <intent-filter>
