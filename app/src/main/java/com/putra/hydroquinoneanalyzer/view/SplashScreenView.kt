@@ -1,4 +1,4 @@
-package com.putra.hydroquinoneanalyzer.view.splash_screen
+package com.putra.hydroquinoneanalyzer.view
 
 import android.content.Context
 

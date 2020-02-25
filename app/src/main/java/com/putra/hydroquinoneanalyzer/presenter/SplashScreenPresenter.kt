@@ -1,7 +1,9 @@
 package com.putra.hydroquinoneanalyzer.presenter
 
 import android.content.Context
-import com.putra.hydroquinoneanalyzer.view.splash_screen.SplashScreenView
+import android.content.pm.PackageManager
+import androidx.core.app.ActivityCompat
+import com.putra.hydroquinoneanalyzer.view.SplashScreenView
 
 class SplashScreenPresenter(private val view : SplashScreenView) {
 
@@ -22,5 +24,9 @@ class SplashScreenPresenter(private val view : SplashScreenView) {
             }
         }
         thread.start()
+    }
+
+    fun hasPermissions(context: Context, vararg permissions: String): Boolean = permissions.all {
+        ActivityCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
     }
 }

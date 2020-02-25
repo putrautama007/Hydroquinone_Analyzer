@@ -1,4 +1,4 @@
-package com.putra.hydroquinoneanalyzer.view
+package com.putra.hydroquinoneanalyzer.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundGrey"
-    tools:context=".view.ScanResultActivity">
+    tools:context=".activity.ScanResultActivity">
 
     <EditText
         android:id="@+id/etSampleName"
@@ -14,7 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_background"
-        android:hint="@string/masukan_nama_sample"
+        android:hint="@string/sample_name"
         android:textColorHint="@color/colorHint"
         android:textColor="@android:color/black"
         android:inputType="textEmailAddress"
@@ -181,7 +181,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/rounded_button"
-        android:text="@string/simpan_hasil"
+        android:text="@string/save_data"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:textSize="18sp"

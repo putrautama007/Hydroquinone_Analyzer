@@ -4,9 +4,9 @@
     <string name="lakukan_scan">Lakukan Scan</string>
     <string name="camera">Camera</string>
     <string name="gallery">Gallery</string>
-    <string name="masukan_nama_sample">Masukan Nama Sample</string>
-    <string name="simpan_hasil">Simpan Hasil</string>
-    <string name="satuan_konsentrasi">&#160;ppm</string>
+    <string name="sample_name">Masukan Nama Sample</string>
+    <string name="save_data">Simpan Hasil</string>
+    <string name="concentration_unit">&#160;ppm</string>
     <string name="konsentrasi">Konsentrasi&#160;:&#160;</string>
     <string name="RGB">RGB&#160;:&#160;</string>
     <string name="tingkat_hq">Tingkat&#160;HQ&#160;:&#160;</string>
@@ -14,5 +14,10 @@
     <string name="percent">&#160;%</string>
     <string name="choose_photo_info">Pilih foto yang akan dipindai</string>
     <string name="choose_picture">Ambil gambar</string>
-    <string name="no_data">Belum ada data silahkan lakukan scan dengan mengklik tombol tambah</string>
+    <string name="no_data">Belum ada data silahkan lakukan scan untuk menambahkan data</string>
+    <string name="guide">Panduan</string>
+    <string name="scan">Scan</string>
+    <string name="sample">Sampel</string>
+    <string name="curve">Kurva</string>
+    <string name="new_sample">Hasil Sampel Terbaru</string>
 </resources>
