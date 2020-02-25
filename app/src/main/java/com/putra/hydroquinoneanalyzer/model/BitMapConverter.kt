@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.Color
 
 class BitMapConverter(private val bitmap: Bitmap) {
-    fun getAverageColorRGB(): IntArray? {
+    fun getAverageColorRGB(): IntArray {
         val width = bitmap.width / 2
         val height = bitmap.height / 2
         var size = width * height

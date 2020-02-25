@@ -8,20 +8,6 @@ import java.util.concurrent.Executors
 class AppExecutors(private var diskIO: Executor?,private var mainThread: Executor?,
                    private var networkIO: Executor?) {
 
-
-    fun getInstance(): AppExecutors? {
-        if (AppExecutors.sInstance == null) {
-            synchronized(AppExecutors.LOCK) {
-                AppExecutors.sInstance = AppExecutors(
-                    Executors.newSingleThreadExecutor(),
-                    Executors.newFixedThreadPool(3),
-                    com.putra.hydroquinoneanalyzer.room.AppExecutors.MainThreadExecutor()
-                )
-            }
-        }
-        return AppExecutors.sInstance
-    }
-
     fun diskIO(): Executor? {
         return diskIO
     }
@@ -46,5 +32,18 @@ class AppExecutors(private var diskIO: Executor?,private var mainThread: Executo
     companion object{
         private var LOCK = Any()
         private var sInstance: AppExecutors? = null
+
+        fun getInstance(): AppExecutors? {
+            if (sInstance == null) {
+                synchronized(LOCK) {
+                    sInstance = AppExecutors(
+                        Executors.newSingleThreadExecutor(),
+                        Executors.newFixedThreadPool(3),
+                        MainThreadExecutor()
+                    )
+                }
+            }
+            return AppExecutors.sInstance
+        }
     }
 }

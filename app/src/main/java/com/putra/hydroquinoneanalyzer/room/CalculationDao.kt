@@ -14,6 +14,6 @@ interface CalculationDao {
     @Insert
     fun insertScanData(scanModel: ScanModel?)
 
-    @Query("SELECT * FROM scanData WHERE id = :id")
+    @Query("SELECT * FROM scanData WHERE scanId = :id")
     fun getScanDataById(id: Long): ScanModel
 }

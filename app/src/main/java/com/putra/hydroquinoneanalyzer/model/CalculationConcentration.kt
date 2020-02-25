@@ -7,7 +7,7 @@ class CalculationConcentration(private val rgb: Double) {
         return -log10(rgb / 255)
     }
 
-    private fun concentrationCalculation(): Double {
+    fun concentrationCalculation(): Double {
         val a = 0.07
         val b = 0.1538
         return (absorbency() - b) / a
