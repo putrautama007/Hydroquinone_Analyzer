@@ -33,8 +33,10 @@ class SplashScreenActivity : AppCompatActivity(),
         splashScreenPresenter = SplashScreenPresenter(this@SplashScreenActivity)
         if (!splashScreenPresenter.hasPermissions(this, *PERMISSIONS)) {
             ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL)
+        }else{
+            splashScreenPresenter.startAnimation(this@SplashScreenActivity)
         }
-        splashScreenPresenter.startAnimation(this@SplashScreenActivity)
+
     }
 
     override fun startAnimation(context: Context) {

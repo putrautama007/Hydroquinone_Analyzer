@@ -12,7 +12,7 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/rounded_background"
+        app:cardCornerRadius="10dp"
         android:padding="8dp"
         app:layout_constraintEnd_toStartOf="@+id/cardViewScan"
         app:layout_constraintHorizontal_bias="0.5"
@@ -24,7 +24,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            android:background="@drawable/rounded_background"
             android:orientation="vertical"
             tools:ignore="UseCompoundDrawables">
 
@@ -52,7 +51,7 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/rounded_background"
+        app:cardCornerRadius="10dp"
         android:padding="8dp"
         app:layout_constraintEnd_toStartOf="@+id/cardViewCurveList"
         app:layout_constraintHorizontal_bias="0.5"
@@ -64,7 +63,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            android:background="@drawable/rounded_background"
             tools:ignore="UseCompoundDrawables"
             android:orientation="vertical">
 
@@ -92,7 +90,7 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/rounded_background"
+        app:cardCornerRadius="10dp"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -104,7 +102,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            android:background="@drawable/rounded_background"
             tools:ignore="UseCompoundDrawables"
             android:orientation="vertical">
 
@@ -132,8 +129,8 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/rounded_background"
         android:padding="8dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toStartOf="@+id/cardViewSampleList"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/cardViewScan"
@@ -144,7 +141,6 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            android:background="@drawable/rounded_background"
             tools:ignore="UseCompoundDrawables"
             android:orientation="vertical">
 
