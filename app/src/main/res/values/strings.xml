@@ -21,4 +21,8 @@
     <string name="curve">Kurva</string>
     <string name="new_sample">Hasil Sampel Terbaru</string>
     <string name="empty_data">Empty Data</string>
+    <string name="calculation_info">Aplikasi akan melakukan perhitungan konsentrasi hidrokuionon</string>
+    <string name="result_info">Aplikasi akan menampilkan hasil perhitungan</string>
+    <string name="calculation_prosess">Melakukan Perhitungan</string>
+    <string name="show_result">Menampilkan Hasil</string>
 </resources>
