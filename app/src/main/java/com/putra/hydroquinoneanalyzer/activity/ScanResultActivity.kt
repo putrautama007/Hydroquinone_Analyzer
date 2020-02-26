@@ -14,13 +14,13 @@ import com.putra.hydroquinoneanalyzer.model.CalculationConcentration
 import com.putra.hydroquinoneanalyzer.model.ScanModel
 import com.putra.hydroquinoneanalyzer.presenter.ScanResultPresenter
 import com.putra.hydroquinoneanalyzer.room.ScanDataDatabase
+import com.putra.hydroquinoneanalyzer.utils.DecimalFormat.Companion.decimalFormat
 import com.putra.hydroquinoneanalyzer.view.ScanResultView
 import kotlinx.android.synthetic.main.activity_scan_result.*
 import java.text.DecimalFormat
 
 class ScanResultActivity : AppCompatActivity(),View.OnClickListener,ScanResultView {
 
-    private val decimalFormat = DecimalFormat("#.##")
     private lateinit var scanResultPresenter: ScanResultPresenter
     private lateinit var scanDataDatabase: ScanDataDatabase
     private lateinit var rgb: IntArray
