@@ -20,4 +20,5 @@
     <string name="sample">Sampel</string>
     <string name="curve">Kurva</string>
     <string name="new_sample">Hasil Sampel Terbaru</string>
+    <string name="empty_data">Empty Data</string>
 </resources>
