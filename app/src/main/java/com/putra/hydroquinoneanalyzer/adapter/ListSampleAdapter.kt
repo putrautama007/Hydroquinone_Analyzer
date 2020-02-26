@@ -1,5 +1,6 @@
 package com.putra.hydroquinoneanalyzer.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -15,11 +16,11 @@ import com.putra.hydroquinoneanalyzer.model.ScanModel
 import com.putra.hydroquinoneanalyzer.activity.DetailSampleDataActivity
 
 class ListSampleAdapter(
-    private val context: Context,
-    private var scanListModel: ArrayList<ScanModel>
+    private val context: Context
 ) :
     RecyclerView.Adapter<ListSampleAdapter.ViewHolder>() {
 
+    private  var scanListModel: ArrayList<ScanModel> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -40,6 +41,7 @@ class ListSampleAdapter(
         notifyDataSetChanged()
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val scanModel: ScanModel = scanListModel[position]
         holder.llColorSample!!.setBackgroundColor(
@@ -51,9 +53,9 @@ class ListSampleAdapter(
         )
         holder.tvSampleName?.text = scanModel.sampleName
         holder.tvSampleColorRGB!!.text =
-            "RGB : " + "(" + scanModel.red + "," + scanModel.green + "," + scanModel.blue + ")"
+            "RGB : ( ${scanModel.red }, ${scanModel.green} , ${scanModel.blue} )"
         holder.tvSampleStatus!!.text =
-            context.resources.getString(R.string.status) + scanModel.status
+            "${context.resources.getString(R.string.status)}  ${scanModel.status}"
         holder.cvScanData.setOnClickListener {
             val intent = Intent(context, DetailSampleDataActivity::class.java)
             intent.putExtra("sampleId", scanModel.scanId)
