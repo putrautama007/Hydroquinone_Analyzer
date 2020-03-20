@@ -30,9 +30,6 @@ class MainActivity : AppCompatActivity(),View.OnClickListener,MainView {
 
     override fun onClick(p0: View?) {
         when(p0){
-            cardViewCurveList ->{
-                startActivity<CurveListActivity>()
-            }
             cardViewGuide ->{
                 startActivity<GuideActivity>()
             }
@@ -51,7 +48,6 @@ class MainActivity : AppCompatActivity(),View.OnClickListener,MainView {
     }
 
     override fun initView() {
-        cardViewCurveList.setOnClickListener(this)
         cardViewGuide.setOnClickListener(this)
         cardViewSampleList.setOnClickListener(this)
         cardViewScan.setOnClickListener(this)

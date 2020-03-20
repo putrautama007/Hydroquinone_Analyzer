@@ -14,7 +14,7 @@
     <string name="percent">&#160;%</string>
     <string name="choose_photo_info">Pilih foto yang akan dipindai</string>
     <string name="choose_picture">Ambil gambar</string>
-    <string name="no_data">Belum ada data silahkan lakukan scan untuk menambahkan data</string>
+    <string name="no_data">Tidak ada data hasil perhitungan</string>
     <string name="guide">Panduan</string>
     <string name="scan">Scan</string>
     <string name="sample">Sampel</string>
@@ -25,4 +25,5 @@
     <string name="result_info">Aplikasi akan menampilkan hasil perhitungan</string>
     <string name="calculation_prosess">Melakukan Perhitungan</string>
     <string name="show_result">Menampilkan Hasil</string>
+    <string name="delete_sample">Hapus Sampel</string>
 </resources>

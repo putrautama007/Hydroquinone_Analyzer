@@ -12,8 +12,8 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginTop="16dp"
-        app:cardCornerRadius="10dp"
         android:padding="8dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toStartOf="@+id/cardViewScan"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,10 +28,10 @@
             tools:ignore="UseCompoundDrawables">
 
             <ImageView
-                android:contentDescription="@string/guide"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
+                android:contentDescription="@string/guide"
                 android:src="@drawable/ic_guide" />
 
             <TextView
@@ -51,9 +51,9 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginTop="16dp"
-        app:cardCornerRadius="10dp"
         android:padding="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewCurveList"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/cardViewSampleList"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/cardViewGuide"
         app:layout_constraintTop_toTopOf="parent">
@@ -63,14 +63,14 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            tools:ignore="UseCompoundDrawables"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
-                android:contentDescription="@string/scan"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
+                android:contentDescription="@string/scan"
                 android:src="@drawable/ic_search" />
 
             <TextView
@@ -90,48 +90,9 @@
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_marginTop="16dp"
-        app:cardCornerRadius="10dp"
         android:padding="8dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cardViewCurveList"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            tools:ignore="UseCompoundDrawables"
-            android:orientation="vertical">
-
-            <ImageView
-                android:contentDescription="@string/sample"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_sample" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="@string/sample"
-                android:textSize="14sp" />
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewCurveList"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="16dp"
-        android:padding="8dp"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/cardViewSampleList"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/cardViewScan"
         app:layout_constraintTop_toTopOf="parent">
@@ -141,22 +102,22 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            tools:ignore="UseCompoundDrawables"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
 
             <ImageView
-                android:contentDescription="@string/curve"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_curve" />
+                android:contentDescription="@string/sample"
+                android:src="@drawable/ic_sample" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="@string/curve"
+                android:text="@string/sample"
                 android:textSize="14sp" />
 
         </LinearLayout>
@@ -189,9 +150,9 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewSample">
 
         <ImageView
-            android:contentDescription="@string/empty_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/empty_data"
             android:src="@drawable/ic_no_data"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -219,13 +180,13 @@
         android:id="@+id/rvListSample"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        tools:itemCount="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewSample"
         app:layout_constraintVertical_bias="0.0"
+        tools:itemCount="3"
         tools:listitem="@layout/row_sample" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

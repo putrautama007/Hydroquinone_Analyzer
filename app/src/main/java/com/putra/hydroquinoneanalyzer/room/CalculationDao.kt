@@ -1,6 +1,7 @@
 package com.putra.hydroquinoneanalyzer.room
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.putra.hydroquinoneanalyzer.model.ScanModel
@@ -16,4 +17,7 @@ interface CalculationDao {
 
     @Query("SELECT * FROM scanData WHERE scanId = :id")
     fun getScanDataById(id: Long): ScanModel
+
+    @Delete
+    fun deleteScanData(scanModel: ScanModel?)
 }
