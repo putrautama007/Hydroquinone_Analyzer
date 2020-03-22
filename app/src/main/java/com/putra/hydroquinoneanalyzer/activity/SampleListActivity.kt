@@ -40,6 +40,7 @@ class SampleListActivity : AppCompatActivity(),SampleListView,View.OnClickListen
                 sampleListPresenter.filterSampleList(editable.toString())
             }
         })
+        imageButtonBackListSample.setOnClickListener(this)
     }
 
     override fun onSupportNavigateUp(): Boolean {
