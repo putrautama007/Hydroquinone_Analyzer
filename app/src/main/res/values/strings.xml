@@ -26,4 +26,6 @@
     <string name="calculation_prosess">Melakukan Perhitungan</string>
     <string name="show_result">Menampilkan Hasil</string>
     <string name="delete_sample">Hapus Sampel</string>
+    <string name="sample_search_hint">Cari nama sampel</string>
+    <string name="data_not_found">Data tidak ditemukan</string>
 </resources>

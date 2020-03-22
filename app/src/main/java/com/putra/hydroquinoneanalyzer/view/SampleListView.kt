@@ -8,4 +8,6 @@ interface SampleListView {
     fun hideLoading()
     fun setSampleRecyclerView(scanModels: List<ScanModel>)
     fun showNoData()
+    fun filterRecyclerviewHasData(scanModels: ArrayList<ScanModel>)
+    fun filterRecyclerviewHasNoData()
 }

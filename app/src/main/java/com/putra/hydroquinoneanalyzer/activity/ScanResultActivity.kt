@@ -17,6 +17,9 @@ import com.putra.hydroquinoneanalyzer.room.ScanDataDatabase
 import com.putra.hydroquinoneanalyzer.utils.DecimalFormat.Companion.decimalFormat
 import com.putra.hydroquinoneanalyzer.view.ScanResultView
 import kotlinx.android.synthetic.main.activity_scan_result.*
+import org.jetbrains.anko.clearTask
+import org.jetbrains.anko.clearTop
+import org.jetbrains.anko.intentFor
 import java.text.DecimalFormat
 
 class ScanResultActivity : AppCompatActivity(),View.OnClickListener,ScanResultView {
@@ -90,10 +93,7 @@ class ScanResultActivity : AppCompatActivity(),View.OnClickListener,ScanResultVi
     }
 
     override fun intentToMain() {
-        val intentToMain = Intent(this, MainActivity::class.java)
-        intentToMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        intentToMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        startActivity(intentToMain)
+        startActivity(intentFor<MainActivity>().clearTop().clearTask())
     }
 
 }

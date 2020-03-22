@@ -20,7 +20,7 @@ class ListSampleAdapter(
 ) :
     RecyclerView.Adapter<ListSampleAdapter.ViewHolder>() {
 
-    private  var scanListModel: ArrayList<ScanModel> = ArrayList()
+    private var scanListModel: ArrayList<ScanModel> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -41,6 +41,11 @@ class ListSampleAdapter(
         notifyDataSetChanged()
     }
 
+    fun filterSampleList(filteredSampleList: ArrayList<ScanModel>) {
+        this.scanListModel = filteredSampleList
+        notifyDataSetChanged()
+    }
+
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val scanModel: ScanModel = scanListModel[position]
@@ -53,7 +58,7 @@ class ListSampleAdapter(
         )
         holder.tvSampleName?.text = scanModel.sampleName
         holder.tvSampleColorRGB!!.text =
-            "RGB : ( ${scanModel.red }, ${scanModel.green} , ${scanModel.blue} )"
+            "RGB : ( ${scanModel.red}, ${scanModel.green} , ${scanModel.blue} )"
         holder.tvSampleStatus!!.text =
             "${context.resources.getString(R.string.status)}  ${scanModel.status}"
         holder.cvScanData.setOnClickListener {
