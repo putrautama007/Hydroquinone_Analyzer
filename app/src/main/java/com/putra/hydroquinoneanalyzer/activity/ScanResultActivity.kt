@@ -8,7 +8,6 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.putra.hydroquinoneanalyzer.R
-import com.putra.hydroquinoneanalyzer.model.BitMapConverter
 import com.putra.hydroquinoneanalyzer.model.ScanModel
 import com.putra.hydroquinoneanalyzer.presenter.ScanResultPresenter
 import com.putra.hydroquinoneanalyzer.room.ScanDataDatabase
@@ -18,7 +17,6 @@ import kotlinx.android.synthetic.main.activity_scan_result.*
 import org.jetbrains.anko.clearTask
 import org.jetbrains.anko.clearTop
 import org.jetbrains.anko.intentFor
-import java.text.DecimalFormat
 
 class ScanResultActivity : AppCompatActivity(),View.OnClickListener,ScanResultView {
 
@@ -69,8 +67,7 @@ class ScanResultActivity : AppCompatActivity(),View.OnClickListener,ScanResultVi
     override fun initView() {
         btnSaveResult.setOnClickListener(this)
         val bitmap = intent.getParcelableExtra<Bitmap>("result")!!
-        val bitMapConverter = BitMapConverter(bitmap)
-        rgb= bitMapConverter.getAverageColorRGB()
+        rgb= scanResultPresenter.getAverageColorRGB(bitmap)
         tvRGBResult.text = "${resources.getString(R.string.RGB)} (${rgb[0]} , ${rgb[1]} , ${rgb[2]})"
         llColor.setBackgroundColor(Color.rgb(rgb[0], rgb[1], rgb[2]))
     }
