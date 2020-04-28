@@ -1,7 +1,6 @@
 package com.putra.hydroquinoneanalyzer.activity
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Bundle
@@ -10,7 +9,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.putra.hydroquinoneanalyzer.R
 import com.putra.hydroquinoneanalyzer.model.BitMapConverter
-import com.putra.hydroquinoneanalyzer.model.CalculationConcentration
 import com.putra.hydroquinoneanalyzer.model.ScanModel
 import com.putra.hydroquinoneanalyzer.presenter.ScanResultPresenter
 import com.putra.hydroquinoneanalyzer.room.ScanDataDatabase
@@ -27,7 +25,7 @@ class ScanResultActivity : AppCompatActivity(),View.OnClickListener,ScanResultVi
     private lateinit var scanResultPresenter: ScanResultPresenter
     private lateinit var scanDataDatabase: ScanDataDatabase
     private lateinit var rgb: IntArray
-    private lateinit var calculationConcentration :CalculationConcentration
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,30 +35,28 @@ class ScanResultActivity : AppCompatActivity(),View.OnClickListener,ScanResultVi
         scanDataDatabase = ScanDataDatabase.getInstance(this)!!
         scanResultPresenter = ScanResultPresenter(this)
         scanResultPresenter.initView()
+        scanResultPresenter.calculationConcentration(rgb[2].toDouble())
         btnSaveResult.setOnClickListener(this)
-
     }
 
     override fun onClick(p0: View?) {
-        when(p0){
-            btnSaveResult ->{
+        val scanModel = ScanModel(
+            System.currentTimeMillis(),
+            etSampleName.text.toString(),
+            rgb[0],
+            rgb[1],
+            rgb[2],
+            tvConcentration.text.toString(),
+            tvHQLevel.text.toString(),
+            tvStatus.text.toString()
+        )
+        if(p0 == btnSaveResult){
                 if (etSampleName.text.toString() != "") {
-                    val scanModel = ScanModel(
-                        System.currentTimeMillis(),
-                        etSampleName.text.toString(),
-                        rgb[0],
-                        rgb[1],
-                        rgb[2],
-                        calculationConcentration.concentrationCalculation(),
-                        calculationConcentration.concentrationPercentage(),
-                        calculationConcentration.checkStatus()
-                    )
                     scanResultPresenter.saveData(scanModel,scanDataDatabase)
                 } else {
-                    Toast.makeText(this, "Isi nama sample", Toast.LENGTH_SHORT)
+                    Toast.makeText(this, "Isi nama sampel", Toast.LENGTH_SHORT)
                         .show()
                 }
-            }
         }
     }
 
@@ -76,24 +72,24 @@ class ScanResultActivity : AppCompatActivity(),View.OnClickListener,ScanResultVi
         val bitMapConverter = BitMapConverter(bitmap)
         rgb= bitMapConverter.getAverageColorRGB()
         tvRGBResult.text = "${resources.getString(R.string.RGB)} (${rgb[0]} , ${rgb[1]} , ${rgb[2]})"
-
         llColor.setBackgroundColor(Color.rgb(rgb[0], rgb[1], rgb[2]))
-
-        calculationConcentration =
-            CalculationConcentration(rgb[2].toDouble())
-        tvConcentration.text =
-            resources.getString(R.string.konsentrasi) + decimalFormat.format(
-                calculationConcentration.concentrationCalculation()
-            ) + resources.getString(R.string.concentration_unit)
-        tvHQLevel.text = resources.getString(R.string.tingkat_hq) + decimalFormat.format(
-            calculationConcentration.concentrationPercentage()
-        ) + resources.getString(R.string.percent)
-        tvStatus.text =
-            resources.getString(R.string.status) + calculationConcentration.checkStatus()
     }
 
     override fun intentToMain() {
         startActivity(intentFor<MainActivity>().clearTop().clearTask())
+    }
+
+    @SuppressLint("SetTextI18n")
+    override fun setResultCalculation(concentration: Double, hqLevel: Double, status: String) {
+        tvConcentration.text =
+            resources.getString(R.string.konsentrasi) + decimalFormat.format(
+                concentration
+            ) + resources.getString(R.string.concentration_unit)
+        tvHQLevel.text = resources.getString(R.string.tingkat_hq) + decimalFormat.format(
+            hqLevel
+        ) + resources.getString(R.string.percent)
+        tvStatus.text =
+            resources.getString(R.string.status) + status
     }
 
 }

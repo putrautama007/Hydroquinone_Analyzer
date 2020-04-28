@@ -22,10 +22,10 @@ data class ScanModel(
     var blue: Int = 0,
 
     @ColumnInfo(name = "concentration")
-    var concentration: Double = 0.0,
+    var concentration: String = "",
 
     @ColumnInfo(name = "concentrationPercentage")
-    var concentrationPercentage: Double = 0.0,
+    var concentrationPercentage: String = "",
 
     @ColumnInfo(name = "status")
     var status: String? = ""

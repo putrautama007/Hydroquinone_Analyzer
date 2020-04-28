@@ -59,8 +59,7 @@ class ListSampleAdapter(
         holder.tvSampleName?.text = scanModel.sampleName
         holder.tvSampleColorRGB!!.text =
             "RGB : ( ${scanModel.red}, ${scanModel.green} , ${scanModel.blue} )"
-        holder.tvSampleStatus!!.text =
-            "${context.resources.getString(R.string.status)}  ${scanModel.status}"
+        holder.tvSampleStatus!!.text = scanModel.status
         holder.cvScanData.setOnClickListener {
             val intent = Intent(context, DetailSampleDataActivity::class.java)
             intent.putExtra("sampleId", scanModel.scanId)
@@ -69,10 +68,10 @@ class ListSampleAdapter(
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val llColorSample = itemView.findViewById<LinearLayout?>(R.id.llColorSample)
-        val tvSampleName = itemView.findViewById<TextView?>(R.id.tvNameSample)
-        val tvSampleColorRGB = itemView.findViewById<TextView?>(R.id.tvRGB)
-        val tvSampleStatus = itemView.findViewById<TextView?>(R.id.tvStatus)
-        val cvScanData = itemView.findViewById<CardView>(R.id.cvScanData)
+        val llColorSample: LinearLayout = itemView.findViewById(R.id.llColorSample)
+        val tvSampleName: TextView = itemView.findViewById(R.id.tvNameSample)
+        val tvSampleColorRGB: TextView = itemView.findViewById(R.id.tvRGB)
+        val tvSampleStatus: TextView = itemView.findViewById(R.id.tvStatus)
+        val cvScanData: CardView = itemView.findViewById(R.id.cvScanData)
     }
 }

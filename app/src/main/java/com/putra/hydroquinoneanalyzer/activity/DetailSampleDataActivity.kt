@@ -52,11 +52,9 @@ class DetailSampleDataActivity : AppCompatActivity(),DetailSampleDataView,View.O
                 )
             )
             txtRGBDetail.text = "${resources.getString(R.string.RGB)} ( ${scanModel.red} ,${scanModel.green} , ${scanModel.blue})"
-            tvConcentrationDetail.text = "${resources.getString(R.string.konsentrasi)} ${decimalFormat.format(
-                scanModel.concentration)} ${resources.getString(R.string.concentration_unit)}"
-            tvHQLevelDetail.text = "${resources.getString(R.string.tingkat_hq)} ${decimalFormat.format(
-                scanModel.concentrationPercentage)} ${resources.getString(R.string.percent)}"
-            tvStatusDetail.text = "${resources.getString(R.string.status)} ${scanModel.status}"
+            tvConcentrationDetail.text = scanModel.concentration
+            tvHQLevelDetail.text =scanModel.concentrationPercentage
+            tvStatusDetail.text = scanModel.status
         }
     }
 

@@ -35,7 +35,6 @@
         <activity
             android:name=".activity.DetailSampleDataActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activity.SplashScreenActivity"

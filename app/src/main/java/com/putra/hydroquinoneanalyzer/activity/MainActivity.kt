@@ -57,14 +57,6 @@ class MainActivity : AppCompatActivity(),View.OnClickListener,MainView {
         rvListSample.adapter = listSampleAdapter
     }
 
-    override fun showLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun hideLoading() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     override fun setSampleRecyclerView(scanModels: List<ScanModel>) {
         runOnUiThread { listSampleAdapter.setScanData(scanModels as ArrayList) }
     }

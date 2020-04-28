@@ -60,9 +60,7 @@ class SplashScreenActivity : AppCompatActivity(),
             for (i in permissions.indices) perms[permissions[i]] = grantResults[i]
 
             if (perms[Manifest.permission.READ_EXTERNAL_STORAGE] == PackageManager.PERMISSION_GRANTED
-                && perms[Manifest.permission.ACCESS_COARSE_LOCATION] == PackageManager.PERMISSION_GRANTED
-                && perms[Manifest.permission.ACCESS_FINE_LOCATION] == PackageManager.PERMISSION_GRANTED
-                && perms[Manifest.permission.READ_SMS] == PackageManager.PERMISSION_GRANTED
+                && perms[Manifest.permission.CAMERA] == PackageManager.PERMISSION_GRANTED
             ) {
                 splashScreenPresenter.startAnimation(this)
             } else { // Permission Denied
