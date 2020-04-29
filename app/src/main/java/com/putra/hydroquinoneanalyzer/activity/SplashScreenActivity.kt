@@ -15,11 +15,11 @@ import com.putra.hydroquinoneanalyzer.view.SplashScreenView
 
 class SplashScreenActivity : AppCompatActivity(),
     SplashScreenView {
-    lateinit var splashScreenPresenter: SplashScreenPresenter
+    private lateinit var splashScreenPresenter: SplashScreenPresenter
 
     companion object {
-        const val PERMISSION_ALL = 1
-        val PERMISSIONS = arrayOf(
+        private const val PERMISSION_ALL = 1
+        private val PERMISSIONS = arrayOf(
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.CAMERA

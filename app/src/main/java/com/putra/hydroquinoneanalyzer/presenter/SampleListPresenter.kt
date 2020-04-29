@@ -8,7 +8,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class SampleListPresenter(private val sampleListView: SampleListView) {
-    lateinit var scanModels: List<ScanModel>
+    private lateinit var scanModels: List<ScanModel>
     fun initView(){
         sampleListView.initView()
     }

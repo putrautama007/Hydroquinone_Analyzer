@@ -55,14 +55,6 @@ class SampleListActivity : AppCompatActivity(),SampleListView,View.OnClickListen
         rvListSample.adapter = listSampleAdapter
     }
 
-    override fun showLoading() {
-        TODO("not implemented")
-    }
-
-    override fun hideLoading() {
-        TODO("not implemented")
-    }
-
     override fun setSampleRecyclerView(scanModels: List<ScanModel>) {
         runOnUiThread { listSampleAdapter.setScanData(scanModels as ArrayList) }
     }

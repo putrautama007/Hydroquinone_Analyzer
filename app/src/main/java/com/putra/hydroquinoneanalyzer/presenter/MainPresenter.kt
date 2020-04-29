@@ -1,6 +1,5 @@
 package com.putra.hydroquinoneanalyzer.presenter
 
-import android.view.View
 import com.putra.hydroquinoneanalyzer.model.ScanModel
 import com.putra.hydroquinoneanalyzer.room.AppExecutors
 import com.putra.hydroquinoneanalyzer.room.ScanDataDatabase
