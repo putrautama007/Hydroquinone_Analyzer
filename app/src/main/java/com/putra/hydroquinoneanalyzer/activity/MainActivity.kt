@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(),View.OnClickListener,MainView {
     override fun onClick(p0: View?) {
         when(p0){
             cardViewGuide ->{
-                startActivity<GuideActivity>()
+                startActivity<UserGuideActivity>()
             }
             cardViewSampleList ->{
                 startActivity<SampleListActivity>()

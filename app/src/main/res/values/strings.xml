@@ -12,7 +12,6 @@
     <string name="tingkat_hq">Tingkat&#160;HQ&#160;:&#160;</string>
     <string name="status">Status&#160;:&#160;</string>
     <string name="percent">&#160;%</string>
-    <string name="choose_photo_info">Pilih foto yang akan dipindai</string>
     <string name="choose_picture">Ambil gambar</string>
     <string name="no_data">Tidak ada data hasil perhitungan</string>
     <string name="guide">Panduan</string>
@@ -21,11 +20,20 @@
     <string name="curve">Kurva</string>
     <string name="new_sample">Hasil Sampel Terbaru</string>
     <string name="empty_data">Empty Data</string>
-    <string name="calculation_info">Aplikasi akan melakukan perhitungan konsentrasi hidrokuionon</string>
-    <string name="result_info">Aplikasi akan menampilkan hasil perhitungan</string>
-    <string name="calculation_prosess">Melakukan Perhitungan</string>
-    <string name="show_result">Menampilkan Hasil</string>
     <string name="delete_sample">Hapus Sampel</string>
     <string name="sample_search_hint">Cari nama sampel</string>
     <string name="data_not_found">Data tidak ditemukan</string>
+    <string name="next">Selanjutnya</string>
+    <string name="get_started">Mulai</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+
+    <string name="pick_photo">Pilih Foto</string>
+    <string name="calculation_proses">Melakukan Perhitungan</string>
+    <string name="show_result">Menampilkan Hasil</string>
+
+    <string name="choose_photo_info">Pilih foto yang akan dipindai</string>
+    <string name="calculation_info">Aplikasi akan melakukan perhitungan konsentrasi hidrokuionon</string>
+    <string name="result_info">Aplikasi akan menampilkan hasil perhitungan</string>
+
 </resources>
