@@ -1,6 +1,7 @@
 package com.putra.hydroquinoneanalyzer.presenter
 
 import android.annotation.SuppressLint
+import android.graphics.Bitmap
 import android.os.Environment
 import android.view.View
 import com.putra.hydroquinoneanalyzer.view.SelectImageView
@@ -56,6 +57,14 @@ class SelectImagePresenter(private val selectImageView: SelectImageView) {
 
     fun checkPermission(){
         selectImageView.checkPermission()
+    }
+
+    fun calculate(bitmap: Bitmap?){
+        if (bitmap != null) {
+            selectImageView.intentToScanResultActivity(bitmap)
+        } else {
+            selectImageView.showMessage()
+        }
     }
 
 }

@@ -11,7 +11,6 @@ import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -28,19 +27,19 @@ import kotlinx.android.synthetic.main.activity_select_image.*
 import java.io.File
 import java.io.IOException
 
-class SelectImageActivity : AppCompatActivity(),View.OnClickListener,SelectImageView {
+class SelectImageActivity : AppCompatActivity(), View.OnClickListener, SelectImageView {
 
-    lateinit var bitmap: Bitmap
-    lateinit var selectPickImageDialog : Dialog
-    lateinit var selectImagePresenter: SelectImagePresenter
-    lateinit var imageFile : File
+    private var bitmap: Bitmap? = null
+    private lateinit var selectPickImageDialog: Dialog
+    private lateinit var selectImagePresenter: SelectImagePresenter
+    private lateinit var imageFile: File
 
-    companion object{
+    companion object {
         private const val CAPTURE_IMAGE_CODE = 0
         private const val GALLERY_IMAGE_CODE = 1
     }
 
-    private lateinit var cameraFilePath : String
+    private lateinit var cameraFilePath: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,25 +54,14 @@ class SelectImageActivity : AppCompatActivity(),View.OnClickListener,SelectImage
     }
 
     override fun onClick(p0: View?) {
-        when(p0){
+        when (p0) {
             btnScan -> {
-                if (bitmap != null) {
-                    val intent =
-                        Intent(this@SelectImageActivity, ScanResultActivity::class.java)
-                    intent.putExtra("result", bitmap)
-                    startActivity(intent)
-                } else {
-                    Toast.makeText(
-                        applicationContext,
-                        "Tolong pilih gambar yang akan di scan",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
+                selectImagePresenter.calculate(bitmap)
             }
-            ivScanImage ->{
+            ivScanImage -> {
                 selectImagePresenter.showPopUp(ivScanImage)
             }
-            ivSetImage ->{
+            ivSetImage -> {
                 selectImagePresenter.showPopUp(ivSetImage)
             }
         }
@@ -163,6 +151,21 @@ class SelectImageActivity : AppCompatActivity(),View.OnClickListener,SelectImage
         }
     }
 
+    override fun intentToScanResultActivity(bitmap: Bitmap) {
+        val intent =
+            Intent(this@SelectImageActivity, ScanResultActivity::class.java)
+        intent.putExtra("result", bitmap)
+        startActivity(intent)
+    }
+
+    override fun showMessage() {
+        Toast.makeText(
+            applicationContext,
+            "Tolong pilih gambar yang akan di scan",
+            Toast.LENGTH_LONG
+        ).show()
+    }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -183,7 +186,7 @@ class SelectImageActivity : AppCompatActivity(),View.OnClickListener,SelectImage
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == GALLERY_IMAGE_CODE && resultCode == Activity.RESULT_OK) {
-            val selectedImage : Uri? = data?.data
+            val selectedImage: Uri? = data?.data
             if (selectedImage != null) {
                 CropImage.activity(selectedImage)
                     .start(this)
@@ -201,7 +204,7 @@ class SelectImageActivity : AppCompatActivity(),View.OnClickListener,SelectImage
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             val result = CropImage.getActivityResult(data)
             if (resultCode == Activity.RESULT_OK) {
-                val resultUri : Uri = result.uri
+                val resultUri: Uri = result.uri
                 Glide.with(this@SelectImageActivity).load(resultUri).into(ivSetImage)
                 selectImagePresenter.hideLoading()
                 try {

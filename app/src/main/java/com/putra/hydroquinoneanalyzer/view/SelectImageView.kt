@@ -1,5 +1,6 @@
 package com.putra.hydroquinoneanalyzer.view
 
+import android.graphics.Bitmap
 import android.view.View
 
 interface SelectImageView {
@@ -9,4 +10,6 @@ interface SelectImageView {
     fun captureFromCamera()
     fun fromGallery()
     fun checkPermission()
+    fun intentToScanResultActivity(bitmap: Bitmap)
+    fun showMessage()
 }
