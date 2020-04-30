@@ -37,7 +37,7 @@ class ScanResultActivity : AppCompatActivity(),View.OnClickListener,ScanResultVi
         btnSaveResult.setOnClickListener(this)
     }
 
-    override fun onClick(p0: View?) {
+    override fun onClick(view: View?) {
         val scanModel = ScanModel(
             System.currentTimeMillis(),
             etSampleName.text.toString(),
@@ -48,7 +48,7 @@ class ScanResultActivity : AppCompatActivity(),View.OnClickListener,ScanResultVi
             tvHQLevel.text.toString(),
             tvStatus.text.toString()
         )
-        if(p0 == btnSaveResult){
+        if(view == btnSaveResult){
                 if (etSampleName.text.toString() != "") {
                     scanResultPresenter.saveData(scanModel,scanDataDatabase)
                 } else {
