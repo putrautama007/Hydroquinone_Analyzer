@@ -9,7 +9,7 @@ import com.putra.hydroquinoneanalyzer.model.ScanModel
 @Dao
 interface CalculationDao {
 
-    @Query("Select * from scanData")
+    @Query("Select * from scanData ORDER BY scanId DESC")
     fun getScanData(): List<ScanModel>
 
     @Insert
