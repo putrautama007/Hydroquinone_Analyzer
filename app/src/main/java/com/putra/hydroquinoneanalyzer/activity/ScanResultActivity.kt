@@ -73,8 +73,6 @@ class ScanResultActivity : AppCompatActivity(),View.OnClickListener,ScanResultVi
     }
 
     override fun intentToMain() {
-        Toast.makeText(this, "Berhasil menyimpan hasil perhitungan", Toast.LENGTH_SHORT)
-            .show()
         startActivity(intentFor<MainActivity>().clearTop().clearTask())
     }
 
