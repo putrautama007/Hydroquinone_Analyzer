@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "882283842090",
+    "firebase_url": "https://hydroquinone-analyzer.firebaseio.com",
+    "project_id": "hydroquinone-analyzer",
+    "storage_bucket": "hydroquinone-analyzer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882283842090:android:e9288ac296f16dad2ad153",
+        "android_client_info": {
+          "package_name": "com.putra.hydroquinoneanalyzer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882283842090-irq1n7o6gbbkj5if10dev3r7k9ff35pk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBz42K35uQkoq2FJwZ06d-5-QRTFAKqTNk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882283842090-irq1n7o6gbbkj5if10dev3r7k9ff35pk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

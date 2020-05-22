@@ -62,6 +62,8 @@ class MainActivity : AppCompatActivity(),View.OnClickListener,MainView {
     }
 
     override fun showNoData() {
-        clNoData.visibility = View.VISIBLE
+        runOnUiThread {
+            clNoData.visibility = View.VISIBLE
+        }
     }
 }

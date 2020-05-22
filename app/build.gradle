@@ -6,6 +6,10 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'com.android.application'
+
+apply plugin: 'com.google.gms.google-services'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -43,4 +47,5 @@ dependencies {
     implementation "org.jetbrains.anko:anko-commons:$anko_version"
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
     implementation 'com.github.AppIntro:AppIntro:5.1.0'
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
 }
