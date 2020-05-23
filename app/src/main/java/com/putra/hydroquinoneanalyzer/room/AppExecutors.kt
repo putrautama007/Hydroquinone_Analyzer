@@ -43,7 +43,7 @@ class AppExecutors(private var diskIO: Executor?,private var mainThread: Executo
                     )
                 }
             }
-            return AppExecutors.sInstance
+            return sInstance
         }
     }
 }

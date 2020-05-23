@@ -11,7 +11,8 @@ class MainPresenter(private val mainView: MainView) {
     }
 
     fun retrieveScanData(scanDataDatabase:ScanDataDatabase){
-        AppExecutors.getInstance()?.diskIO()?.execute {
+        val appExecutors = AppExecutors.getInstance()
+        appExecutors?.diskIO()?.execute {
             val scanModels: List<ScanModel>? =
                 scanDataDatabase.calculationDao()?.getScanData()
             if (scanModels?.isEmpty()!!) {
