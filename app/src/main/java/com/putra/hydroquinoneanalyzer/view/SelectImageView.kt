@@ -10,6 +10,8 @@ interface SelectImageView {
     fun captureFromCamera()
     fun fromGallery()
     fun checkPermission()
-    fun intentToScanResultActivity(bitmap: Bitmap)
+    fun intentToScanResultActivityFromGallery(bitmap: Bitmap)
+    fun intentToScanResultActivityFromCamera(redValue: Int,greenValue:Int, blueValue:Int)
+    fun intentToTakePictureActivity()
     fun showMessage()
 }

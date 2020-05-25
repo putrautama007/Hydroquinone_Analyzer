@@ -11,6 +11,7 @@ import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
@@ -20,6 +21,9 @@ import androidx.core.content.FileProvider
 import com.bumptech.glide.Glide
 import com.putra.hydroquinoneanalyzer.BuildConfig
 import com.putra.hydroquinoneanalyzer.R
+import com.putra.hydroquinoneanalyzer.activity.TakePictureActivity.Companion.BLUE
+import com.putra.hydroquinoneanalyzer.activity.TakePictureActivity.Companion.GREEN
+import com.putra.hydroquinoneanalyzer.activity.TakePictureActivity.Companion.RED
 import com.putra.hydroquinoneanalyzer.presenter.SelectImagePresenter
 import com.putra.hydroquinoneanalyzer.view.SelectImageView
 import com.theartofdev.edmodo.cropper.CropImage
@@ -33,6 +37,9 @@ class SelectImageActivity : AppCompatActivity(), View.OnClickListener, SelectIma
     private lateinit var selectPickImageDialog: Dialog
     private lateinit var selectImagePresenter: SelectImagePresenter
     private lateinit var imageFile: File
+    private var redValue : Int = 0
+    private var greenValue : Int = 0
+    private var blueValue : Int = 0
 
     companion object {
         private const val CAPTURE_IMAGE_CODE = 0
@@ -56,7 +63,10 @@ class SelectImageActivity : AppCompatActivity(), View.OnClickListener, SelectIma
     override fun onClick(p0: View?) {
         when (p0) {
             btnScan -> {
-                selectImagePresenter.calculate(bitmap)
+                if (bitmap != null)
+                    selectImagePresenter.calculateFromGallery(bitmap)
+                else
+                    selectImagePresenter.calculateFromCamera(redValue,greenValue,blueValue)
             }
             ivScanImage -> {
                 selectImagePresenter.showPopUp(ivScanImage)
@@ -92,6 +102,8 @@ class SelectImageActivity : AppCompatActivity(), View.OnClickListener, SelectIma
 
     override fun showLoadingPickImage() {
         ivScanImage.visibility = View.GONE
+        linearLayoutColors.visibility = View.GONE
+        resultColor.visibility = View.GONE
         ivSetImage.visibility = View.VISIBLE
         progressbarSelectImage.visibility = View.VISIBLE
     }
@@ -147,15 +159,33 @@ class SelectImageActivity : AppCompatActivity(), View.OnClickListener, SelectIma
                 CAPTURE_IMAGE_CODE
             )
         } else {
-            selectImagePresenter.captureFromCamera()
+            selectImagePresenter.intentToTakePictureActivity()
         }
     }
 
-    override fun intentToScanResultActivity(bitmap: Bitmap) {
+    override fun intentToScanResultActivityFromGallery(bitmap: Bitmap) {
         val intent =
             Intent(this@SelectImageActivity, ScanResultActivity::class.java)
         intent.putExtra("result", bitmap)
         startActivity(intent)
+    }
+
+    override fun intentToScanResultActivityFromCamera(
+        redValue: Int,
+        greenValue: Int,
+        blueValue: Int
+    ) {
+        val intent =
+            Intent(this@SelectImageActivity, ScanResultActivity::class.java)
+        intent.putExtra(RED, redValue)
+        intent.putExtra(GREEN, greenValue)
+        intent.putExtra(BLUE, blueValue)
+        startActivity(intent)
+    }
+
+    override fun intentToTakePictureActivity() {
+        val moveForResultIntent = Intent(this@SelectImageActivity, TakePictureActivity::class.java)
+        startActivityForResult(moveForResultIntent, CAPTURE_IMAGE_CODE)
     }
 
     override fun showMessage() {
@@ -193,13 +223,15 @@ class SelectImageActivity : AppCompatActivity(), View.OnClickListener, SelectIma
             } else {
                 ivSetImage.visibility = View.GONE
             }
-        } else if (requestCode == CAPTURE_IMAGE_CODE && resultCode == Activity.RESULT_OK) {
-            if (cameraFilePath.isBlank()) {
-                ivSetImage.visibility = View.GONE
-            } else {
-                CropImage.activity(Uri.parse(cameraFilePath))
-                    .start(this)
-            }
+        } else if (requestCode == CAPTURE_IMAGE_CODE && resultCode == TakePictureActivity.CAPTURE_IMAGE_CODE_RESULT) {
+            ivSetImage.visibility = View.INVISIBLE
+            linearLayoutColors.visibility = View.VISIBLE
+            resultColor.visibility = View.VISIBLE
+            redValue = data!!.getIntExtra(RED,0)
+            greenValue = data.getIntExtra(GREEN, 0)
+            blueValue = data.getIntExtra(BLUE, 0)
+            resultColor.setBackgroundColor(Color.rgb(redValue, greenValue, blueValue))
+            selectImagePresenter.hideLoading()
         }
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             val result = CropImage.getActivityResult(data)

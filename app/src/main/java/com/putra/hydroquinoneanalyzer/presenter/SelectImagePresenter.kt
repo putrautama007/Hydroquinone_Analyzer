@@ -59,12 +59,23 @@ class SelectImagePresenter(private val selectImageView: SelectImageView) {
         selectImageView.checkPermission()
     }
 
-    fun calculate(bitmap: Bitmap?){
+    fun calculateFromGallery(bitmap: Bitmap?){
         if (bitmap != null) {
-            selectImageView.intentToScanResultActivity(bitmap)
+            selectImageView.intentToScanResultActivityFromGallery(bitmap)
         } else {
             selectImageView.showMessage()
         }
     }
 
+    fun calculateFromCamera(redValue: Int,greenValue:Int, blueValue:Int?){
+        if(blueValue != null){
+            selectImageView.intentToScanResultActivityFromCamera(redValue,greenValue, blueValue)
+        }else{
+            selectImageView.showMessage()
+        }
+    }
+
+    fun intentToTakePictureActivity(){
+        selectImageView.intentToTakePictureActivity()
+    }
 }

@@ -8,6 +8,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.putra.hydroquinoneanalyzer.R
+import com.putra.hydroquinoneanalyzer.activity.TakePictureActivity.Companion.BLUE
+import com.putra.hydroquinoneanalyzer.activity.TakePictureActivity.Companion.GREEN
+import com.putra.hydroquinoneanalyzer.activity.TakePictureActivity.Companion.RED
 import com.putra.hydroquinoneanalyzer.model.ScanModel
 import com.putra.hydroquinoneanalyzer.presenter.ScanResultPresenter
 import com.putra.hydroquinoneanalyzer.room.ScanDataDatabase
@@ -66,10 +69,23 @@ class ScanResultActivity : AppCompatActivity(),View.OnClickListener,ScanResultVi
     @SuppressLint("SetTextI18n")
     override fun initView() {
         btnSaveResult.setOnClickListener(this)
-        val bitmap = intent.getParcelableExtra<Bitmap>("result")!!
-        rgb= scanResultPresenter.getAverageColorRGB(bitmap)
-        tvRGBResult.text = "${resources.getString(R.string.RGB)} (${rgb[0]} , ${rgb[1]} , ${rgb[2]})"
-        llColor.setBackgroundColor(Color.rgb(rgb[0], rgb[1], rgb[2]))
+        val bitmap = intent.getParcelableExtra<Bitmap>("result")
+        val redValue = intent.getIntExtra(RED,0)
+        val greenValue = intent.getIntExtra(GREEN,0)
+        val blueValue = intent.getIntExtra(BLUE,0)
+        if (bitmap != null) {
+            rgb = scanResultPresenter.getAverageColorRGB(bitmap)
+            tvRGBResult.text =
+                "${resources.getString(R.string.RGB)} (${rgb[0]} , ${rgb[1]} , ${rgb[2]})"
+            llColor.setBackgroundColor(Color.rgb(rgb[0], rgb[1], rgb[2]))
+        }else{
+            rgb = intArrayOf(
+                redValue, greenValue, blueValue
+            )
+            tvRGBResult.text =
+                "${resources.getString(R.string.RGB)} (${rgb[0]} , ${rgb[1]} , ${rgb[2]})"
+            llColor.setBackgroundColor(Color.rgb(rgb[0], rgb[1], rgb[2]))
+        }
     }
 
     override fun intentToMain() {
