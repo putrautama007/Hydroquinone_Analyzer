@@ -48,9 +48,6 @@ class TakePictureActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_take_picture)
-        supportActionBar?.title = ""
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-        supportActionBar!!.setDisplayShowHomeEnabled(true)
 
         // Request camera permissions
         if (allPermissionsGranted()) {
@@ -66,11 +63,10 @@ class TakePictureActivity : AppCompatActivity() {
         outputDirectory = getOutputDirectory()
 
         cameraExecutor = Executors.newSingleThreadExecutor()
-    }
 
-    override fun onSupportNavigateUp(): Boolean {
-        onBackPressed()
-        return true
+        backTackPicture.setOnClickListener{
+           finish()
+        }
     }
 
     private fun startCamera() {

@@ -7,6 +7,18 @@
     tools:context=".activity.TakePictureActivity">
 
     <ImageButton
+        android:id="@+id/backTackPicture"
+        android:elevation="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_arrow_back_grey_24dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
         android:src="@drawable/ic_camera_alt"
         android:id="@+id/capturePictureButton"
         android:layout_width="70dp"

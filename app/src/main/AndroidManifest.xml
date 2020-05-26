@@ -17,6 +17,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.TakePictureActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
             tools:ignore="LockedOrientationActivity"/>
         <activity
             android:name=".activity.UserGuideActivity"

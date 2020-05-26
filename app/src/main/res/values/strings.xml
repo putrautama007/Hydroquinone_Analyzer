@@ -35,5 +35,6 @@
     <string name="choose_photo_info">Pilih foto yang akan dipindai, pemilihan foto dapat dipilih melalui gallery atau dengan mengambil gambar menggunakan kamera</string>
     <string name="calculation_info">Aplikasi akan melakukan perhitungan konsentrasi hidrokuionon melalui data gambar yang telah di pilih</string>
     <string name="result_info">Aplikasi akan menampilkan hasil perhitungan berdasarkan hasil perhitungan yang telah selesai dilakukan</string>
+    <string name="choose_photo">Pilih foto yang akan dipindai</string>
 
 </resources>
