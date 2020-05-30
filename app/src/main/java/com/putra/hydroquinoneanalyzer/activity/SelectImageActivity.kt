@@ -11,15 +11,12 @@ import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.FileProvider
 import com.bumptech.glide.Glide
-import com.putra.hydroquinoneanalyzer.BuildConfig
 import com.putra.hydroquinoneanalyzer.R
 import com.putra.hydroquinoneanalyzer.activity.TakePictureActivity.Companion.BLUE
 import com.putra.hydroquinoneanalyzer.activity.TakePictureActivity.Companion.GREEN
@@ -28,7 +25,6 @@ import com.putra.hydroquinoneanalyzer.presenter.SelectImagePresenter
 import com.putra.hydroquinoneanalyzer.view.SelectImageView
 import com.theartofdev.edmodo.cropper.CropImage
 import kotlinx.android.synthetic.main.activity_select_image.*
-import java.io.File
 import java.io.IOException
 
 class SelectImageActivity : AppCompatActivity(), View.OnClickListener, SelectImageView {
@@ -36,7 +32,6 @@ class SelectImageActivity : AppCompatActivity(), View.OnClickListener, SelectIma
     private var bitmap: Bitmap? = null
     private lateinit var selectPickImageDialog: Dialog
     private lateinit var selectImagePresenter: SelectImagePresenter
-    private lateinit var imageFile: File
     private var redValue : Int = 0
     private var greenValue : Int = 0
     private var blueValue : Int = 0
@@ -45,8 +40,6 @@ class SelectImageActivity : AppCompatActivity(), View.OnClickListener, SelectIma
         private const val CAPTURE_IMAGE_CODE = 0
         private const val GALLERY_IMAGE_CODE = 1
     }
-
-    private lateinit var cameraFilePath: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -112,25 +105,6 @@ class SelectImageActivity : AppCompatActivity(), View.OnClickListener, SelectIma
         progressbarSelectImage.visibility = View.GONE
     }
 
-    override fun captureFromCamera() {
-        try {
-            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            imageFile = selectImagePresenter.createImageFile()
-            cameraFilePath = selectImagePresenter.getCameraFilePath(imageFile)
-            intent.putExtra(
-                MediaStore.EXTRA_OUTPUT,
-                FileProvider.getUriForFile(
-                    this,
-                    "${BuildConfig.APPLICATION_ID}.provider",
-                    imageFile
-                )
-            )
-            startActivityForResult(intent, CAPTURE_IMAGE_CODE)
-        } catch (ex: IOException) {
-            ex.printStackTrace()
-        }
-    }
-
     override fun fromGallery() {
         val pickPhoto = Intent(Intent.ACTION_PICK)
         pickPhoto.type = "image/*"
@@ -194,23 +168,6 @@ class SelectImageActivity : AppCompatActivity(), View.OnClickListener, SelectIma
             "Tolong pilih gambar yang akan di scan",
             Toast.LENGTH_LONG
         ).show()
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == CAPTURE_IMAGE_CODE) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "camera permission granted", Toast.LENGTH_LONG).show()
-                selectImagePresenter.captureFromCamera()
-            } else {
-                Toast.makeText(this, "camera permission denied", Toast.LENGTH_LONG).show()
-                selectImagePresenter.checkPermission()
-            }
-        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

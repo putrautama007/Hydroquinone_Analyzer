@@ -15,30 +15,6 @@ class SelectImagePresenter(private val selectImageView: SelectImageView) {
         selectImageView.showPopUp(v)
     }
 
-    @SuppressLint("SimpleDateFormat")
-    @Throws(IOException::class)
-    fun createImageFile(): File {
-        val timeStamp =
-            SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-        val imageFileName = "JPEG_" + timeStamp + "_"
-        val storageDir = File(
-            Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_DCIM
-            ), "Camera"
-        )
-        val image = File.createTempFile(
-            imageFileName,
-            ".jpg",
-            storageDir
-        )
-        getCameraFilePath(image)
-        return image
-    }
-
-    fun getCameraFilePath(imageFile : File) : String{
-        return "file://" + imageFile.absolutePath
-    }
-
     fun showLoadingPickImage(){
         selectImageView.showLoadingPickImage()
     }
@@ -49,10 +25,6 @@ class SelectImagePresenter(private val selectImageView: SelectImageView) {
 
     fun fromGallery(){
         selectImageView.fromGallery()
-    }
-
-    fun captureFromCamera(){
-        selectImageView.captureFromCamera()
     }
 
     fun checkPermission(){

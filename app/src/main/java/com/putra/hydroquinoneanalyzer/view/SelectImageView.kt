@@ -7,7 +7,6 @@ interface SelectImageView {
     fun showPopUp(v: View?)
     fun showLoadingPickImage()
     fun hideLoading()
-    fun captureFromCamera()
     fun fromGallery()
     fun checkPermission()
     fun intentToScanResultActivityFromGallery(bitmap: Bitmap)
