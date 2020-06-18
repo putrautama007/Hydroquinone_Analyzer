@@ -59,7 +59,12 @@ class ListSampleAdapter(
         holder.tvSampleName?.text = scanModel.sampleName
         holder.tvSampleColorRGB!!.text =
             "RGB : ( ${scanModel.red}, ${scanModel.green} , ${scanModel.blue} )"
-        holder.tvSampleStatus!!.text = scanModel.status
+        if(scanModel.status?.contains("Tidak Layak Pakai")!!){
+            holder.tvSampleStatus!!.text = "${scanModel.status!!.toLowerCase()} karena konsentrasi melebihi dari 0.02 ppm"
+        }else{
+            holder.tvSampleStatus!!.text = "${scanModel.status!!.toLowerCase()} karena konsentrasi kurang dari 0.02 ppm"
+        }
+
         holder.cvScanData.setOnClickListener {
             val intent = Intent(context, DetailSampleDataActivity::class.java)
             intent.putExtra("sampleId", scanModel.scanId)
