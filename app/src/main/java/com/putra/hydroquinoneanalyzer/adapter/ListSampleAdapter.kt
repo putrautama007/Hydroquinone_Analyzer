@@ -60,9 +60,9 @@ class ListSampleAdapter(
         holder.tvSampleColorRGB!!.text =
             "RGB : ( ${scanModel.red}, ${scanModel.green} , ${scanModel.blue} )"
         if(scanModel.status?.contains("Tidak Layak Pakai")!!){
-            holder.tvSampleStatus!!.text = "${scanModel.status!!.toLowerCase()} karena konsentrasi melebihi dari 0.02 ppm"
+            holder.tvSampleStatus!!.text = "Status : ${scanModel.status!!.toLowerCase()} karena konsentrasi melebihi dari 0.02 ppm"
         }else{
-            holder.tvSampleStatus!!.text = "${scanModel.status!!.toLowerCase()} karena konsentrasi kurang dari 0.02 ppm"
+            holder.tvSampleStatus!!.text = "Status : ${scanModel.status!!.toLowerCase()} karena konsentrasi kurang dari 0.02 ppm"
         }
 
         holder.cvScanData.setOnClickListener {

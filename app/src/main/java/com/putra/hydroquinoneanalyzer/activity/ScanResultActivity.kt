@@ -26,6 +26,7 @@ class ScanResultActivity : AppCompatActivity(),View.OnClickListener,ScanResultVi
     private lateinit var scanResultPresenter: ScanResultPresenter
     private lateinit var scanDataDatabase: ScanDataDatabase
     private lateinit var rgb: IntArray
+    private lateinit var setStatus : String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,7 +50,7 @@ class ScanResultActivity : AppCompatActivity(),View.OnClickListener,ScanResultVi
             rgb[2],
             tvConcentration.text.toString(),
             tvHQLevel.text.toString(),
-            tvStatus.text.toString()
+            setStatus
         )
         if(view == btnSaveResult){
                 if (etSampleName.text.toString() != "") {
@@ -101,8 +102,13 @@ class ScanResultActivity : AppCompatActivity(),View.OnClickListener,ScanResultVi
         tvHQLevel.text = resources.getString(R.string.tingkat_hq) + decimalFormat.format(
             hqLevel
         ) + resources.getString(R.string.percent)
-        tvStatus.text =
-            resources.getString(R.string.status) + status
+
+        if(status.contains("Tidak Layak Pakai")){
+            tvStatus.text  =  resources.getString(R.string.status) + status+ " karena konsentrasi melebihi dari 0.02 ppm"
+        }else{
+            tvStatus.text  = resources.getString(R.string.status) + status +" karena konsentrasi kurang dari 0.02 ppm"
+        }
+        setStatus = status
     }
 
 }

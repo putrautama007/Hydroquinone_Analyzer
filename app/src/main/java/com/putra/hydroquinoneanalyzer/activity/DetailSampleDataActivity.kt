@@ -54,7 +54,11 @@ class DetailSampleDataActivity : AppCompatActivity(),DetailSampleDataView,View.O
             txtRGBDetail.text = "${resources.getString(R.string.RGB)} ( ${scanModel.red} ,${scanModel.green} , ${scanModel.blue})"
             tvConcentrationDetail.text = scanModel.concentration
             tvHQLevelDetail.text =scanModel.concentrationPercentage
-            tvStatusDetail.text = scanModel.status
+            if(scanModel.status?.contains("Tidak Layak Pakai")!!){
+                tvStatusDetail.text = "Status : ${scanModel.status!!.toLowerCase()} karena konsentrasi melebihi dari 0.02 ppm"
+            }else{
+                tvStatusDetail.text = "Status : ${scanModel.status!!.toLowerCase()} karena konsentrasi kurang dari 0.02 ppm"
+            }
         }
     }
 
