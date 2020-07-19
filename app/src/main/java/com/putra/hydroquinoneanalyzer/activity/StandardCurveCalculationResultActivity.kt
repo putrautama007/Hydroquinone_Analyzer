@@ -30,9 +30,9 @@ class StandardCurveCalculationResultActivity : AppCompatActivity(),StandardCurve
         listDataPointGreenValue = arrayOfNulls(rbgListModel.size)
         listDataPointBlueValue = arrayOfNulls(rbgListModel.size)
         for(rgbData in rbgListModel.indices){
-            listDataPointRedValue[rgbData] = DataPoint(rgbData.toDouble()+1,rbgListModel[rgbData].redValue.toDouble())
-            listDataPointGreenValue[rgbData] = DataPoint(rgbData.toDouble()+1,rbgListModel[rgbData].greenValue.toDouble())
-            listDataPointBlueValue[rgbData] = DataPoint(rgbData.toDouble()+1,rbgListModel[rgbData].blueValue.toDouble())
+            listDataPointRedValue[rgbData] = DataPoint(rbgListModel[rgbData].concentration,rbgListModel[rgbData].redValue.toDouble())
+            listDataPointGreenValue[rgbData] = DataPoint(rbgListModel[rgbData].concentration,rbgListModel[rgbData].greenValue.toDouble())
+            listDataPointBlueValue[rgbData] = DataPoint(rbgListModel[rgbData].concentration,rbgListModel[rgbData].blueValue.toDouble())
         }
         standardCurveCalculationResultPresenter.initView()
 

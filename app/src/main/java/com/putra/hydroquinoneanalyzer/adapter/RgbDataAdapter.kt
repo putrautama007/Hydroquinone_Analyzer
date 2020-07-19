@@ -18,7 +18,7 @@ RecyclerView.Adapter<RgbDataAdapter.ViewHolder>() {
     private var rbgListModel: ArrayList<RgbModel> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return RgbDataAdapter.ViewHolder(
+        return ViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.row_standart_curve_sample,
                 parent,
@@ -46,11 +46,15 @@ RecyclerView.Adapter<RgbDataAdapter.ViewHolder>() {
         )
         holder.rgbColor!!.text =
             "RGB : ( ${rbgListModel[position].redValue}, ${rbgListModel[position].greenValue} , ${rbgListModel[position].blueValue} )"
+        holder.concentration!!.text =
+            "Konsentrasi : ${rbgListModel[position].concentration}"
+
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val llColorSampleRGB: LinearLayout = itemView.findViewById(R.id.llColorSampleRgb)
         val rgbColor: TextView = itemView.findViewById(R.id.tvRGBStandardCurve)
+        val concentration: TextView = itemView.findViewById(R.id.tvRGBStandardCurveConcentration)
     }
 
 }

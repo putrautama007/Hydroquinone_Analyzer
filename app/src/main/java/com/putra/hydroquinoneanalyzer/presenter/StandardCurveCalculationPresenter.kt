@@ -1,5 +1,6 @@
 package com.putra.hydroquinoneanalyzer.presenter
 
+import com.putra.hydroquinoneanalyzer.model.RgbModel
 import com.putra.hydroquinoneanalyzer.view.StandardCurveCalculationView
 
 class StandardCurveCalculationPresenter(private val standardCurveCalculationView: StandardCurveCalculationView) {
@@ -13,5 +14,9 @@ class StandardCurveCalculationPresenter(private val standardCurveCalculationView
 
     fun initView() {
         standardCurveCalculationView.initView()
+    }
+
+    fun showPopup(redValue : Int,greenValue : Int , blueValue : Int){
+        standardCurveCalculationView.showPopup(redValue, greenValue, blueValue)
     }
 }

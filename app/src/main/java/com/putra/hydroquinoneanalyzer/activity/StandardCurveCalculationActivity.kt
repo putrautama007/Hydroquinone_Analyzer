@@ -1,12 +1,15 @@
 package com.putra.hydroquinoneanalyzer.activity
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.putra.hydroquinoneanalyzer.R
@@ -16,6 +19,7 @@ import com.putra.hydroquinoneanalyzer.presenter.StandardCurveCalculationPresente
 import com.putra.hydroquinoneanalyzer.view.StandardCurveCalculationView
 import kotlinx.android.synthetic.main.activity_standard_curve_calculation.*
 import org.jetbrains.anko.startActivity
+
 
 class StandardCurveCalculationActivity : AppCompatActivity(),StandardCurveCalculationView {
 
@@ -61,9 +65,7 @@ class StandardCurveCalculationActivity : AppCompatActivity(),StandardCurveCalcul
             redValue = data!!.getIntExtra(TakePictureActivity.RED,0)
             greenValue = data.getIntExtra(TakePictureActivity.GREEN, 0)
             blueValue = data.getIntExtra(TakePictureActivity.BLUE, 0)
-            rbgListModel.add(RgbModel(redValue,greenValue,blueValue))
-            rgbDataAdapter.setScanData(rbgListModel)
-            rgbDataAdapter.notifyDataSetChanged()
+            standardCurveCalculationPresenter.showPopup(redValue, greenValue, blueValue)
         }
     }
 
@@ -98,5 +100,43 @@ class StandardCurveCalculationActivity : AppCompatActivity(),StandardCurveCalcul
         recyclerViewStandardCurveRGB.layoutManager = LinearLayoutManager(this)
         rgbDataAdapter = RgbDataAdapter(this)
         recyclerViewStandardCurveRGB.adapter = rgbDataAdapter
+    }
+
+    override fun showPopup(redValue : Int, greenValue : Int, blueValue : Int) {
+        val dialogBuilder: AlertDialog = AlertDialog.Builder(this).create()
+        val inflater = this.layoutInflater
+        val dialogView: View = inflater.inflate(R.layout.view_rbg_data, null)
+        val btnAddRgbData : Button = dialogView.findViewById(R.id.btnAddRgbData)
+        val etConcentration : EditText = dialogView.findViewById(R.id.etConcentration)
+        val llColorSampleRGB: LinearLayout = dialogView.findViewById(R.id.llColorRgb)
+        val rgbColor: TextView = dialogView.findViewById(R.id.tvRgbData)
+        llColorSampleRGB.setBackgroundColor(
+            Color.rgb(
+               redValue,
+                greenValue,
+                blueValue
+            )
+        )
+        rgbColor.text =
+            "RGB : ( $redValue, $greenValue , $blueValue )"
+        btnAddRgbData.setOnClickListener {
+            if(etConcentration.text.toString().isEmpty()){
+                Toast.makeText(this, "Harap isi nilai konsentrasi", Toast.LENGTH_LONG).show()
+            }else {
+                rbgListModel.add(
+                    RgbModel(
+                        redValue,
+                        greenValue,
+                        blueValue,
+                        etConcentration.text.toString().toDouble()
+                    )
+                )
+                rgbDataAdapter.setScanData(rbgListModel)
+                rgbDataAdapter.notifyDataSetChanged()
+                dialogBuilder.dismiss()
+            }
+        }
+        dialogBuilder.setView(dialogView)
+        dialogBuilder.show()
     }
 }
