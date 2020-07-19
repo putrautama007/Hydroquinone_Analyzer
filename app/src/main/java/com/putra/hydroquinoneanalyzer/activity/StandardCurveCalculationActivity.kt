@@ -15,6 +15,7 @@ import com.putra.hydroquinoneanalyzer.model.RgbModel
 import com.putra.hydroquinoneanalyzer.presenter.StandardCurveCalculationPresenter
 import com.putra.hydroquinoneanalyzer.view.StandardCurveCalculationView
 import kotlinx.android.synthetic.main.activity_standard_curve_calculation.*
+import org.jetbrains.anko.startActivity
 
 class StandardCurveCalculationActivity : AppCompatActivity(),StandardCurveCalculationView {
 
@@ -44,7 +45,7 @@ class StandardCurveCalculationActivity : AppCompatActivity(),StandardCurveCalcul
             if (rbgListModel.size < 5){
                 Toast.makeText(this, "Jumlah data minimal 5 buah", Toast.LENGTH_LONG).show()
             }else{
-
+                startActivity<StandardCurveCalculationResultActivity>("rgbData" to rbgListModel)
             }
         }
     }

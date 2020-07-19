@@ -38,5 +38,6 @@
     <string name="choose_photo">Pilih foto yang akan dipindai</string>
     <string name="make_standard_curve">Buat Kurva Standar</string>
     <string name="add_data">Tambah Data</string>
+    <string name="standard_curve_name">Nama Kurva Standar</string>
 
 </resources>

@@ -13,6 +13,9 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
+    androidExtensions {
+        experimental = true
+    }
     defaultConfig {
         applicationId "com.putra.hydroquinoneanalyzer"
         minSdkVersion 21
@@ -77,4 +80,6 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:$camerax_version"
     // CameraX View class
     implementation "androidx.camera:camera-view:1.0.0-alpha10"
+    //graphView
+    implementation 'com.jjoe64:graphview:4.2.2'
 }
