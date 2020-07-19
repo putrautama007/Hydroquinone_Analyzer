@@ -15,10 +15,14 @@
         android:roundIcon="@mipmap/launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.TakePictureActivity"
+        <activity android:name=".activity.StandardCurveCalculationResultActivity"></activity>
+        <activity android:name=".activity.StandardCurveCalculationActivity" />
+        <activity android:name=".activity.StandardCurveActivity" />
+        <activity
+            android:name=".activity.TakePictureActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activity.UserGuideActivity"
             android:screenOrientation="portrait"

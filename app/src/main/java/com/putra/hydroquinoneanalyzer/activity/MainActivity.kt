@@ -26,6 +26,9 @@ class MainActivity : AppCompatActivity(),View.OnClickListener,MainView {
 
         mainPresenter.initView()
         mainPresenter.retrieveScanData(scanDataDatabase)
+        cardViewStandartCurve.setOnClickListener {
+            startActivity<StandardCurveActivity>()
+        }
     }
 
     override fun onClick(p0: View?) {
